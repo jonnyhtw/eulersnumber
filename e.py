@@ -1,10 +1,14 @@
+import math
+from tqdm import tqdm
 import matplotlib.pyplot as plt
 import numpy as np
 
-n=10000
+plt.ion()
+
+n=1000000
 totalnumber=np.zeros(n)
 
-for i in range(n):
+for i in tqdm(range(n)):
 
     sum=0
     number=0
@@ -19,6 +23,13 @@ for i in range(n):
         totalnumber[i] = totalnumber[i-1]+number
 
 plt.semilogx(np.arange(1,n+1), totalnumber/np.arange(1,n+1))
+
+plt.plot([1,n], [math.e, math.e])
+
+plt.grid()
+plt.xlim(10,n)
+#plt.ylim(2,3)
+
 
 plt.savefig('e.png')
 
